@@ -1,5 +1,17 @@
 import React from "react";
+import { ThemeProvider } from "./theme-provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-    return <>{children}</>;
+    return (
+        <>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+            >
+                {children}
+            </ThemeProvider>
+        </>
+    );
 }
