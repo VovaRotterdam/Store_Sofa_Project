@@ -11,14 +11,11 @@ import { SubmitButton } from "@/components/form/Button";
 import CheckboxInput from "@/components/form/CheckboxInput";
 import ImageInputContainer from "@/components/form/ImageInputContainer";
 
-interface PageProps {
-    params: {
-        id: string;
-    };
-}
 
-async function EditProductPage({ params }: PageProps) {
-    const product = fetchAdminProductDetails(params.id);
+
+async function EditProductPage({ params }: {params: {id: string}} ) {
+    const {id} = params;
+    const product = fetchAdminProductDetails(id);
     const { name, company, description, featured, price, image } =
         await product;
 
@@ -34,12 +31,12 @@ async function EditProductPage({ params }: PageProps) {
                     image={image}
                     text="upload image"
                 >
-                    <input type="hidden" name="id" value={params.id} />
+                    <input type="hidden" name="id" value={id} />
                     <input type="hidden" name="url" value={image} />
                 </ImageInputContainer>
                 <FormContainer action={updateProductAction}>
                     <div className="grid gap-4 md:grid-cols-2 my-4">
-                        <input type="hidden" name="id" value={params.id} />
+                        <input type="hidden" name="id" value={id} />
                         <FormInput
                             type="text"
                             name="name"
@@ -73,3 +70,4 @@ async function EditProductPage({ params }: PageProps) {
 }
 
 export default EditProductPage;
+.
