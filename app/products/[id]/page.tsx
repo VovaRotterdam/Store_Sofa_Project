@@ -39,9 +39,9 @@ async function SingleProductPage({ params }: PageProps) {
                         <h1 className="capitalize text-3xl font-bold">
                             {name}
                         </h1>
-                        <FavoriteToggleButton productId={id} />
+                        <FavoriteToggleButton productId={params.id} />
                     </div>
-                    <ProductRating productId={id} />
+                    <ProductRating productId={params.id} />
                     <h4 className="text-xl mt-2">{company}</h4>
                     <p className="mt-3 text-md bg-muted inline-block p-2 rounded">
                         {dollarAmount}
@@ -49,7 +49,7 @@ async function SingleProductPage({ params }: PageProps) {
                     <p className="mt-6 leading-8 text-muted-foreground">
                         {description}
                     </p>
-                    <AddToCart productId={id} />
+                    <AddToCart productId={params.id} />
                 </div>
             </div>
         </section>
