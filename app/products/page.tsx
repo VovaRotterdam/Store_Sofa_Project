@@ -6,10 +6,11 @@ async function ProductsPage({
 }: {
     searchParams: { layout?: string; search?: string };
 }) {
-    const layout = searchParams.layout || "grid";
-    const search = searchParams.search || "";
+    const { layout, search } = await searchParams;
+    const layoutL = layout || "grid";
+    const searchS = search || "";
 
-    return <ProductsContainer layout={layout} search={search} />;
+    return <ProductsContainer layout={layoutL} search={searchS} />;
 }
 
 export default ProductsPage;

@@ -8,7 +8,8 @@ import AddToCart from "@/components/single-product/AddToCart";
 import ProductRating from "@/components/single-product/ProductRating";
 
 async function SingleProductPage({ params }: { params: { id: string } }) {
-    const product = await fetchSingleProduct(params.id);
+    const { id } = await params;
+    const product = await fetchSingleProduct(id);
 
     const { name, image, price, description, company } = product;
     const dollarAmount = formatCurrency(price);
@@ -33,9 +34,9 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
                         <h1 className="capitalize text-3xl font-bold">
                             {name}
                         </h1>
-                        <FavoriteToggleButton productId={params.id} />
+                        <FavoriteToggleButton productId={id} />
                     </div>
-                    <ProductRating productId={params.id} />
+                    <ProductRating productId={id} />
                     <h4 className="text-xl mt-2">{company}</h4>
                     <p className="mt-3 text-md bg-muted inline-block p-2 rounded">
                         {dollarAmount}
@@ -43,7 +44,7 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
                     <p className="mt-6 leading-8 text-muted-foreground">
                         {description}
                     </p>
-                    <AddToCart productId={params.id} />
+                    <AddToCart productId={id} />
                 </div>
             </div>
         </section>

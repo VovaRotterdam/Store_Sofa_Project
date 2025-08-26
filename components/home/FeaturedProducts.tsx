@@ -5,6 +5,7 @@ import ProductsGrid from "../products/ProductsGrid";
 
 export default async function FeaturedProducts() {
     const products = await fetchFeaturedProducts();
+
     if (products.length === 0) return <EmptyList />;
 
     return (
