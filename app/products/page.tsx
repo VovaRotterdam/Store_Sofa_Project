@@ -1,11 +1,11 @@
 import ProductsContainer from "@/components/products/ProductsContainer";
 import React from "react";
 
-async function ProductsPage({
-    searchParams,
-}: {
-    searchParams: { layout?: string; search?: string };
-}) {
+interface SearchPageProps {
+    searchParams: Promise<{ layout?: string; search?: string }>; // ✅ searchParams as a Promise
+}
+
+async function ProductsPage({ searchParams }: SearchPageProps) {
     const { layout, search } = await searchParams;
     const layoutL = layout || "grid";
     const searchS = search || "";

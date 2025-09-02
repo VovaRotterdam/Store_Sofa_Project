@@ -114,6 +114,8 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
 
         await deleteImage(product.image);
         revalidatePath("/admin/products");
+        console.log("product removed");
+
         return { message: "product removed" };
     } catch (error) {
         return renderError(error);
@@ -170,9 +172,6 @@ export const updateProductImageAction = async (
         const image = formData.get("image") as File;
         const productId = formData.get("id") as string;
         const oldImageUrl = formData.get("url") as string;
-        // console.log("image", image);
-        // console.log("productId", productId);
-        // console.log("oldImageUrl", oldImageUrl);
 
         const validatedFile = validateWithZodSchema(imageSchema, { image });
 
@@ -193,7 +192,7 @@ export const updateProductImageAction = async (
         revalidatePath(`/admin/products/${productId}/edit`);
         return { message: "Product image updated successfully" };
     } catch (error) {
-        renderError(error);
+        return renderError(error);
     }
 };
 
@@ -239,7 +238,7 @@ export const toggleFavoriteAction = async (prevState: {
             message: favoriteId ? "removed from faves" : "added to faves",
         };
     } catch (error) {
-        renderError(error);
+        return renderError(error);
     }
 };
 
