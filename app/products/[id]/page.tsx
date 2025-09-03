@@ -6,13 +6,12 @@ import { formatCurrency } from "@/utils/format";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import AddToCart from "@/components/single-product/AddToCart";
 import ProductRating from "@/components/single-product/ProductRating";
+import ShareButton from "@/components/single-product/ShareButton";
 
 interface ProductPageProps {
     params: Promise<{ id: string }>;
 }
 
-// async function SingleProductPage({ params }: { params: { id: string } }) {
-//     const { id } = await params;
 async function SingleProductPage(props: ProductPageProps) {
     const params = await props.params;
     const { id } = params;
@@ -41,7 +40,10 @@ async function SingleProductPage(props: ProductPageProps) {
                         <h1 className="capitalize text-3xl font-bold">
                             {name}
                         </h1>
-                        <FavoriteToggleButton productId={id} />
+                        <div className="flex items-center gap-x-2">
+                            <FavoriteToggleButton productId={id} />
+                            <ShareButton productId={id} name={name} />
+                        </div>
                     </div>
                     <ProductRating productId={id} />
                     <h4 className="text-xl mt-2">{company}</h4>
