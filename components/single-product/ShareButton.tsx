@@ -9,10 +9,10 @@ import { LuShare2 } from "react-icons/lu";
 
 import {
     FacebookShareButton,
-    EmailShareButton,
+    WhatsappShareButton,
     LinkedinShareButton,
     FacebookIcon,
-    EmailIcon,
+    WhatsappIcon,
     LinkedinIcon,
 } from "react-share";
 
@@ -35,9 +35,9 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
                 <LinkedinShareButton url={sharedLink}>
                     <LinkedinIcon size={32} round={true} />
                 </LinkedinShareButton>
-                <EmailShareButton url={sharedLink}>
-                    <EmailIcon size={32} round={true} />
-                </EmailShareButton>
+                <WhatsappShareButton url={sharedLink}>
+                    <WhatsappIcon size={32} round={true} />
+                </WhatsappShareButton>
                 <FacebookShareButton url={sharedLink}>
                     <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>
